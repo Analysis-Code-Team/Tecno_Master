@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
     <meta charset="UTF-8">
@@ -15,10 +15,11 @@
 </head>
 
 <body>
+<div sec:authorize="isAuthenticated()" class="principal mt-0" >
     <div id="barraS" >
         <div class="ContIzq  ">
            
-           <div id="LogoX2"><img src="img/logo43.png" alt="" class="img-fluid"><a href="/Principal"><i class="tc">Tecno Master</i><i class="tm">TM</i></a></div>
+           <div id="LogoX2"><img src="img/logo43.png" alt="" class="img-fluid"><a href="/"><i class="tc">Tecno Master</i><i class="tm">TM</i></a></div>
              <div class="barra1"> <i class="fa-solid fa-bars btnmenu "></i></div>
 
         </div>
@@ -37,7 +38,7 @@
                                       Cerrar Sesion
                                     </a>
                                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <li><a class="dropdown-item CerrarSesion" href="/Login">Salir</a></li>
+                                            <li><a class="dropdown-item CerrarSesion" href="/logout">Salir</a></li>
 
                                         </ul>
                                     </li>
@@ -59,11 +60,11 @@
                     <p>Usuario</p>
                 </div>
                 <ul>
-                    <li><a href="/Principal" class="active"><i class="fa-solid fa-house"></i>  Inicio</a></li>
-                    <li><a href="/Empresa"><i class="fa-solid fa-building"></i>  Empresas</a></li>
+                    <li><a href="/" class="active"><i class="fa-solid fa-house"></i>  Inicio</a></li>
+                    <li><a href="/Empresa" class="nav-link disabled"><i class="fa-solid fa-building"></i>  Empresas</a></li>
                     <li><a href="/Empleado"><i class="fa-solid fa-user"></i>  Empleados</a></li>
                     <li><a href="/MovimientoDinero"><i class="fa-sharp fa-solid fa-calculator"></i>  Movimientos</a></li>
-                    <li><a href="/Perfiles"><i class="fa-solid fa-address-card"></i>  Perfiles</a></li>
+                    <li><a href="/Perfiles" class="nav-link disabled"><i class="fa-solid fa-address-card"></i>  Perfiles</a></li>
                     <li id="cerrS"><a href="/Login"><i class="fa-solid fa-circle-user "></i>  Cerrar Sesion</a></li>
                 </ul>
             </div>
@@ -73,7 +74,7 @@
                  <hr id="linea" >
 
 
-                <div class="container-fluid">
+                <div class="container-fluid  ">
                     <div class="row">
                         <div class="row ">
                             <!-- Button trigger modal -->
@@ -190,7 +191,7 @@
             </div>
         </div>
     </div>
-
+</div>
 
 </body>
 
