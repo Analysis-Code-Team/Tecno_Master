@@ -1,0 +1,56 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    margin: 0 auto;
+    background-color: black;
+    width: 90%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.cabecera {
+    background-color: rgb(52, 105, 136);
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+.cabSup {
+    background-color: #fff;
+    margin-bottom: 10px;
+    height: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.cabInf {
+    background-color: rgb(28, 197, 112);
+    margin-bottom: 10px;
+    height: 10%;
+}
+
+.cabSup1 {
+    background-color: aqua;
+    flex-basis: 200px;
+    margin-right: 10px;
+}
+
+.CabSup2 {
+    background-color: rgb(0, 255, 21);
+    flex-basis: 200px;
+    margin-right: 10px;
+    flex-grow: 5;
+}
+
+.tercero {
+    background-color: red;
+    flex-basis: 200px;
+    margin-right: 10px;
+}

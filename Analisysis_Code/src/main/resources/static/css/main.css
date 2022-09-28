@@ -1,0 +1,86 @@
+body
+{
+	background:#e6f1fa  ;
+	padding-top: 80px;
+
+}
+.fondo1
+{
+	background: white;
+	padding:30px;
+	text-align: center;
+}
+.letra1
+{
+	font-family: 'Anton', sans-serif;
+
+}
+.letra2
+{
+	font-family: 'Lobster', cursive;
+	color: #ffa71a;
+	
+}
+
+.titulos
+{
+	text-align: center;
+	color: #020029 ;
+	display: flex;
+	
+	justify-content: center;
+	align-items:center;
+}
+.logo
+{
+	width:100px;
+	height:100px;
+
+
+}
+#mensaje
+{
+	display: none;
+}
+.bot1
+{
+	background-color:#020029;
+	color: #ffa71a;
+	font-size: 18px;
+	font-weight: bold;
+}
+.usuario2
+{
+	font-size: 50px;
+
+	color: #ffa71a;
+}
+.fun1
+{
+	
+}
+
+
+
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
