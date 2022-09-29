@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
     <meta charset="UTF-8">
@@ -15,10 +15,11 @@
 </head>
 
 <body>
+<div sec:authorize="isAuthenticated()" class="principal mt-0" >
     <div id="barraS" >
         <div class="ContIzq  ">
            
-           <div id="LogoX2"><img src="img/logo43.png" alt="" class="img-fluid"><a href="/Principal"><i class="tc">Tecno Master</i><i class="tm">TM</i></a></div>
+           <div id="LogoX2"><img src="img/logo43.png" alt="" class="img-fluid"><a href="/"><i class="tc">Tecno Master</i><i class="tm">TM</i></a></div>
              <div class="barra1"> <i class="fa-solid fa-bars btnmenu "></i></div>
 
         </div>
@@ -37,7 +38,7 @@
                                       Cerrar Sesion
                                     </a>
                                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <li><a class="dropdown-item CerrarSesion" href="/Login">Salir</a></li>
+                                            <li><a class="dropdown-item CerrarSesion" href="/logout">Salir</a></li>
 
                                         </ul>
                                     </li>
@@ -59,12 +60,12 @@
                     <p>Usuario</p>
                 </div>
                 <ul>
-                    <li><a href="/Principal" class="active"><i class="fa-solid fa-house"></i>  Inicio</a></li>
+                    <li><a href="/" class="active"><i class="fa-solid fa-house"></i>  Inicio</a></li>
                     <li><a href="/Empresa"><i class="fa-solid fa-building"></i>  Empresas</a></li>
                     <li><a href="/Empleado"><i class="fa-solid fa-user"></i>  Empleados</a></li>
                     <li><a href="/MovimientoDinero"><i class="fa-sharp fa-solid fa-calculator"></i>  Movimientos</a></li>
-                    <li><a href="/Perfiles"><i class="fa-solid fa-address-card"></i>  Perfiles</a></li>
-                    <li id="cerrS"><a href="/Login"><i class="fa-solid fa-circle-user "></i>  Cerrar Sesion</a></li>
+                    <li><a href="/Perfiles" class="nav-link disabled"><i class="fa-solid fa-address-card"></i>  Perfiles</a></li>
+                    <li id="cerrS"><a href="/logout"><i class="fa-solid fa-circle-user "></i>  Cerrar Sesion</a></li>
                 </ul>
             </div>
             <div class="main">
@@ -75,7 +76,9 @@
 
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-12"><a type="button" class="btn bot1 mb-5 mt-4" href="#">Agregar Empresa</a> </div>
+                        <div class="col-lg-12">
+                            <button type="button" class="btn bot1 mb-5 mt-4" data-bs-toggle="modal" data-bs-target="#exampleModal">Agregar Empresa</button>
+                        </div>
             
                         <div class="col-lg-12">  
                           
@@ -93,83 +96,19 @@
                                               </tr>
                                             </thead>
                                             <tbody>
-                                              <tr>
-                                                <th scope="row">1</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
-                                                <td>Otto</td>
-                                                <td><a href="#" class="edit bg-warning text-dark"><i class="fa-solid fa-file-pen"></i></a></div></td>
-                                                <td><a href="#" class="edit bg-danger text-white"><i class="fa-sharp fa-solid fa-trash"></i></a></div></td>
+                                              <tr th:each="empr:${nEmpresa}">
+                                                <td th:text="${empr.nombre}"></td>
+                                                <td th:text="${empr.id}"></td>
+                                                <td th:text="${empr.direccion}"></td>
+                                                <td th:text="${empr.telefono}"></td>
+                                                <td th:text="${empr.nit}"></td>
+
+                                                <td><a th:href="@{/Empresa/editar/{id} (id = ${empr.id})}" class="edit bg-warning text-dark"><i class="fa-solid fa-file-pen"></i></a></td>
+                                                <td><a th:href="@{/Empresa/eliminar/{id} (id = ${empr.id})}" class="edit bg-danger text-white"><i class="fa-sharp fa-solid fa-trash"></i></a></td>
                                                 
                                               </tr>
-                                              <tr>
-                                                <th scope="row">1</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
-                                                <td>Otto</td>
-                                                <td><a href="#" class="edit bg-warning text-dark"><i class="fa-solid fa-file-pen"></i></a></div></td>
-                                                <td><a href="#" class="edit bg-danger text-white"><i class="fa-sharp fa-solid fa-trash"></i></a></div></td>
-                                                
-                                              </tr>
-                                              <tr>
-                                                <th scope="row">1</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
-                                                <td>Otto</td>
-                                                <td><a href="#" class="edit bg-warning text-dark"><i class="fa-solid fa-file-pen"></i></a></div></td>
-                                                <td><a href="#" class="edit bg-danger text-white"><i class="fa-sharp fa-solid fa-trash"></i></a></div></td>
-                                                
-                                              </tr>
-                                              <tr>
-                                                <th scope="row">2</th>
-                                                <td>Jacob</td>
-                                                <td>Thornton</td>
-                                                <td>@fat</td>
-                                                <td>Jacob</td>
-                                                <td><a href="#" class="edit bg-warning text-dark"><i class="fa-solid fa-file-pen"></i></a></div></td>
-                                                <td><a href="#" class="edit bg-danger text-white"><i class="fa-sharp fa-solid fa-trash"></i></a></div></td>
-                                              
-                                              </tr>
-                                              <tr>
-                                                <th scope="row">3</th>
-                                                <td>Jacob</td>
-                                                <td>Thornton</td>
-                                                <td>@fat</td>
-                                                <td>Jacob</td>
-                                                <td><a href="#" class="edit bg-warning text-dark"><i class="fa-solid fa-file-pen"></i></a></div></td>
-                                                <td><a href="#" class="edit bg-danger text-white"><i class="fa-sharp fa-solid fa-trash"></i></a></div></td>
-                                              
-                                              </tr>
-                                              <tr>
-                                                <th scope="row">4</th>
-                                                <td>Jacob</td>
-                                                <td>Thornton</td>
-                                                <td>@fat</td>
-                                                <td>Jacob</td>
-                                                <td><a href="#" class="edit bg-warning text-dark"><i class="fa-solid fa-file-pen"></i></a></div></td>
-                                                <td><a href="#" class="edit bg-danger text-white"><i class="fa-sharp fa-solid fa-trash"></i></a></div></td>
-                                              
-                                              </tr>
-                                              <tr>
-                                                <th scope="row">5</th>
-                                                <td>Jacob</td>
-                                                <td>Thornton</td>
-                                                <td>@fat</td>
-                                                <td>Jacob</td>
-                                                <td><a href="#" class="edit bg-warning text-dark"><i class="fa-solid fa-file-pen"></i></a></div></td>
-                                                <td><a href="#" class="edit bg-danger text-white"><i class="fa-sharp fa-solid fa-trash"></i></a></div></td>
-                                              
-                                              </tr>
-                                              
-                                              
                                             </tbody>
                             </table>
-
-                         <!-- -------------------------------------------------- -->
-                        
                        </div>
                     </div>
                     </div>
@@ -177,7 +116,36 @@
            
             </div>
         </div>
+    <!-- -------------------------------------------------- -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Agregar Empresa</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form th:action="@{/Empresa}" th:object="${empresa}" method="post">
+                    <div class="modal-body">
+                        <label class="form-label">Nombre Empresa:</label>
+                        <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Ingresar Nombre Empresa" required>
+                        <br>
+                        <label class="form-label">Direccion:</label>
+                        <input type="text" class="form-control" id="direccion" th:field="*{direccion}" placeholder="Ingresar Direccion" required>
+                        <br>
+                        <label class="form-label">Telefono:</label>
+                        <input type="text" class="form-control" id="telefono"  value="1" th:field="*{telefono}"  required>
+                        <br>
+                        <label class="form-label">Nit:</label>
+                        <input type="text" class="form-control" id="nit"  value="1" th:field="*{nit}"  required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Agregar Empresa</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
+</div>
 </body>
-
 </html>
