@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @RestController
 public class EmpresaController {
@@ -21,8 +22,8 @@ public class EmpresaController {
 
     //Buscar empresa por ID -- Funciona Correctamente
     @GetMapping(path = "enterprises/{id}")
-    public Empresa buscarEmpresa(@PathVariable("id") int id){
-        return this.empresaServices.buscarEmpresa(id);
+    public Optional<Empresa> buscarEmpresa(@PathVariable("id") int id){
+        return empresaServices.buscarEmpresa(id);
     }
 
     //Guardar o Actualizar una nueva Empresa -- Funciona Correctamente
