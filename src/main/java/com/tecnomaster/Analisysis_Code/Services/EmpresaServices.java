@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Service
 public class EmpresaServices {
@@ -18,8 +19,8 @@ public class EmpresaServices {
         return (ArrayList<Empresa>) empresaRepository.findAll();
 
     }
-    public  Empresa buscarEmpresa(int id){
-        return empresaRepository.findById(id).get();
+    public Optional<Empresa> buscarEmpresa(int id){
+        return empresaRepository.findById(id);
     }
 
 
